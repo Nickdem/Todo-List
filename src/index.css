@@ -11,3 +11,90 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #7b1fa2;
+}
+
+nav h2 {
+  margin: 0;
+  color: #fff;
+}
+
+nav ul {
+  display: flex;
+  width: 10%;
+  margin: 0;
+  justify-content: space-between;
+  list-style: none;  
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav a:focus,
+nav a:hover {
+  color: #a9a9a9;
+}
+
+.container {
+  width: 60%;
+  margin: 1rem auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form label {
+  color: #2e8b57;
+  margin: .5rem;
+}
+
+.form input {
+  margin: .5rem;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #a9a9a9;
+  font-size: 24px;
+}
+
+.form input:hover,
+.form input:focus {
+  background-color: #fffafa;
+  border-bottom: 2px solid #2e8b57;
+}
+
+.todo {
+  margin-bottom: 1rem;
+  list-style: none;
+}
+
+.todo div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: #fffafa;
+}
+
+.todo.completed div {
+  text-decoration: line-through;
+  background-color: #2e8b567c;
+}
+
+.todo.completed span {
+  text-decoration: line-through;
+}
+
+.todo button {
+  z-index: 2;
+}
