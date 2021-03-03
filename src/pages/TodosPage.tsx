@@ -7,31 +7,31 @@ declare var confirm: (question: string) => boolean
 
 export const TodosPage: React.FC = () => {
 
-    const [todos, setTodos] = useState<ITodo[]>([])
+  const [todos, setTodos] = useState<ITodo[]>([])
 
-    useEffect(() => {
-      const saved = JSON.parse(localStorage.getItem('todos') || '[]') as ITodo[]
-  
-      setTodos(saved)
-    }, [])
-  
-    useEffect(() => {
-      localStorage.setItem('todos', JSON.stringify(todos))
-    }, [todos])
-  
-    const addHandler = (title: string) => {
-      const newTodo: ITodo = {
-        title: title,
-        id: Date.now(),
-        completed: false
-      }
-      //setTodos([newTodo, ...todos])
-      setTodos(prev => [newTodo, ...prev])
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem('todos') || '[]') as ITodo[]
+
+    setTodos(saved)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
+
+  const addHandler = (title: string) => {
+    const newTodo: ITodo = {
+      title: title,
+      id: Date.now(),
+      completed: false
     }
-  
-    const toggleHandler = (id: number) => {
-      setTodos(prev =>
-        prev.map(todo => {
+
+    setTodos(prev => [newTodo, ...prev])
+  }
+
+  const toggleHandler = (id: number) => {
+    setTodos(prev =>
+      prev.map(todo => {
         if (todo.id === id) {
           return {
             ...todo,
@@ -40,19 +40,19 @@ export const TodosPage: React.FC = () => {
         }
         return todo
       }))
-    }
-  
-    const removeHandler = (id: number) => {
-      const shouldRemove = confirm('Вы точно хотите удалить элемент?')
-      if (shouldRemove) {
-        setTodos(prev => prev.filter(todo => todo.id !== id))
-      }  
-    }
+  }
 
-    return (
-        <>
-            <TodoForm onAdd={addHandler} />
-            <TodoList onRemove={removeHandler} onToggle={toggleHandler} todos={todos} />
-        </>
-    )
+  const removeHandler = (id: number) => {
+    const shouldRemove = confirm('Вы точно хотите удалить элемент?')
+    if (shouldRemove) {
+      setTodos(prev => prev.filter(todo => todo.id !== id))
+    }
+  }
+
+  return (
+    <>
+      <TodoForm onAdd={addHandler} />
+      <TodoList onRemove={removeHandler} onToggle={toggleHandler} todos={todos} />
+    </>
+  )
 }

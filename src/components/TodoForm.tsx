@@ -1,39 +1,32 @@
-import React, {useRef} from 'react'
-
-interface TodoFormProps {
-    onAdd(title: string): void
-}
+import React, { useRef } from 'react'
+import { TodoFormProps } from '../interfaces'
 
 export const TodoForm: React.FC<TodoFormProps> = props => {
-    //const [title, setTitle] = useState<string>('')
 
-    // const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    //     setTitle(event.target.value)
-    // }
+  const ref = useRef<HTMLInputElement>(null)
 
-    const ref = useRef<HTMLInputElement>(null)
+  const keyPressHandler = (event: React.KeyboardEvent) => {
+    if (!ref.current!.value.trim()) return
 
-    const keyPressHandler = (event: React.KeyboardEvent) => {
-        if (event.key === 'Enter') {
-            props.onAdd(ref.current!.value)
-            ref.current!.value = ''
-        }
+    if (event.key === 'Enter') {
+      props.onAdd(ref.current!.value)
+      ref.current!.value = ''
     }
+  }
 
-    return (
-        <div className="form">
-            <label htmlFor="title">
-                Введите название дела
-            </label>
-            <input 
-                //onChange={changeHandler}
-                //value={title} 
-                ref={ref}
-                type="text" 
-                id="title" 
-                placeholder="Поле ввода..."
-                onKeyPress={keyPressHandler}
-            />            
-        </div>
-    )
+  return (
+    <div className="todo-form">
+      <label className="todo-form__label" htmlFor="title">
+        Введите название дела:
+      </label>
+      <input
+        className="todo-form__input"
+        ref={ref}
+        type="text"
+        id="title"
+        placeholder="Поле ввода..."
+        onKeyPress={keyPressHandler}
+      />
+    </div>
+  )
 }

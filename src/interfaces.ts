@@ -1,5 +1,9 @@
 export interface ITodo {
-    title: string
-    id: number
-    completed: boolean
+  title: string
+  id: number
+  completed: boolean
+}
+
+export interface TodoFormProps {
+  onAdd(title: string): void
 }

@@ -1,100 +1,178 @@
-body {
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  background-color: #7b1fa2;
-}
-
-nav h2 {
-  margin: 0;
-  color: #fff;
-}
-
-nav ul {
-  display: flex;
-  width: 10%;
-  margin: 0;
-  justify-content: space-between;
-  list-style: none;  
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-}
-
-nav a:focus,
-nav a:hover {
-  color: #a9a9a9;
-}
-
-.container {
-  width: 60%;
-  margin: 1rem auto;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-}
-
-.form label {
-  color: #2e8b57;
-  margin: .5rem;
-}
-
-.form input {
-  margin: .5rem;
-  outline: none;
-  border: none;
-  border-bottom: 2px solid #a9a9a9;
-  font-size: 24px;
-}
-
-.form input:hover,
-.form input:focus {
-  background-color: #fffafa;
-  border-bottom: 2px solid #2e8b57;
-}
-
-.todo {
-  margin-bottom: 1rem;
+ul {
   list-style: none;
 }
 
-.todo div {
+.container {
+  max-width: 1200px;
+  height: calc(100vh - 72px);
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.wrapper {
+  box-shadow: 0px 3px 5px #c2c2c2;
+  overflow: hidden;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #ff4a4a;
+  color: #ffffff;
+}
+
+.navigation__title {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.navigation__list {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  width: 150px;
+}
+
+.navigation__list-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navigation__list-link:hover {
+  color: #dbdbdb;
+}
+
+.navigation__list-link--selected {
+  border-bottom: 1px dashed #ffffff;
+}
+
+.todo-form {
+  padding: 1rem 0;
+}
+
+.todo-form__label {
+  color: #a9a9a9;
+  margin: .5rem 0;
+  font-size: 18px;
+  display: block;
+  cursor: pointer;
+}
+
+.todo-form__input {
+  width: 100%;
+  margin: .5rem 0;
+  padding: 5px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #dbdbdb;
+  font-size: 22px;
+}
+
+.todo-form__input:hover, .todo-form__input:focus {
+  background-color: #eeeeee;
+  border-color: #a9a9a9;
+}
+
+.todo-list {
+  margin: 10px 0;
+  padding: 1rem 0;
+  height: calc(100vh - 72px - 156px);
+  overflow-y: scroll;
+}
+
+.todo-list__item {
+  margin-bottom: 15px;
+  margin-right: 5px;
+  list-style: none;
+}
+
+.todo-list__item:last-child {
+  margin-bottom: 0;
+}
+
+.todo-list__item-desc {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
   padding: 1rem;
-  background-color: #fffafa;
+  background-color: #eeeeee;
+  border: 1px solid #dbdbdb;
 }
 
-.todo.completed div {
+.todo-list__item--completed .todo-list__item-desc {
+  border-color: #269e02;
+  border-style: dashed;
+}
+
+.todo-list__item--completed .todo-list__item-title {
   text-decoration: line-through;
-  background-color: #2e8b567c;
 }
 
-.todo.completed span {
-  text-decoration: line-through;
+.todo-list__item-btn {
+  padding: 5px;
+  background-color: #ff4a4a;
+  color: #ffffff;
+  border: none;
 }
 
-.todo button {
-  z-index: 2;
+.todo-list__empty {
+  text-align: center;
+  font-size: 18px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #dbdbdb;
+  box-shadow: inset 0 0 6px #dbdbdb;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px #afafaf;
+  box-shadow: inset 0 0 6px #afafaf;
+}
+
+.about-title {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.about-subtitle {
+  padding-bottom: 20px;
+}
+
+.about-text {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.about-btn {
+  background-color: #269e02;
+  color: #ffffff;
+  font-size: 18px;
+  padding: 15px;
 }
