@@ -26,6 +26,7 @@ export const TodoForm: React.FC<TodoFormProps> = props => {
         id="title"
         placeholder="Поле ввода..."
         onKeyPress={keyPressHandler}
+        autoComplete="off"
       />
     </div>
   )
